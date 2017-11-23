@@ -1,7 +1,6 @@
 /* Full-width input fields */
 .wp-user-registration-form select,
-.wp-user-registration-form input[type=text],
-.wp-user-registration-form input[type=password] {
+.wp-user-registration-form input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
