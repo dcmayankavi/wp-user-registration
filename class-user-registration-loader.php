@@ -112,6 +112,7 @@ if ( ! class_exists( 'User_Registration_Loader' ) ) :
 				parse_str( $_POST['data'] , $data );
 
 				if( isset( $data['email'] ) && ! empty( $data['email'] ) ) {
+			
 					if ( ! get_user_by( 'email', $data['email'] ) && ! get_user_by( 'slug', $data['username'] ) ) {
 						$uniqid = sha1( uniqid() );
 						$waiting_data = get_option( 'user-registration-not-activated', array() );
@@ -128,6 +129,8 @@ if ( ! class_exists( 'User_Registration_Loader' ) ) :
 							update_option( 'user-registration-not-activated', $waiting_data );
 							$response['success'] = true;
 							$response['message'] = __( 'Congrats, You have been successfully registrated, please check your email id for confirmatin link.', 'user-registration' );
+						} else {
+							$response['message'] = __( 'Please verify your SMPT settings, or try again later.', 'user-registration' );
 						}
 
 					} else {
