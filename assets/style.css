@@ -1,0 +1,53 @@
+/* Full-width input fields */
+.wp-user-registration-form select,
+.wp-user-registration-form input[type=text],
+.wp-user-registration-form input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.wp-user-registration-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Extra styles for the cancel button */
+.wp-user-registration-form .cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.wp-user-registration-form .cancelbtn,.signupbtn {
+    float: left;
+    width: 50%;
+}
+
+/* Add padding to container elements */
+.wp-user-registration-form {
+    padding: 16px;
+}
+
+/* Clear floats */
+.wp-user-registration-form .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .wp-user-registration-form .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+}
