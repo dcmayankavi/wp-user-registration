@@ -119,12 +119,13 @@ if ( ! class_exists( 'User_Registration_Loader' ) ) :
 						$waiting_data[$uniqid] = $data;
 						$url = add_query_arg( 'dc-user-registration', $uniqid, wp_login_url() );
 						$subject = __( 'Confirmation Mail from User Registration plugin.', 'user-registration' );
-						$message = __( 'Dear ', 'user-registration' ) . $data['first-name'];
-						$message .= "\n";
-						$message .= __( 'Please click below to confirm your registration.', 'user-registration' );
-						$message .= "\n<a href='" . $url . "'>" . __( 'Confirm Me', 'user-registration' ) . "</a>";
-						$headers = 'From: '. get_bloginfo( 'name' ) . "\r\n";
+						$message = "Dear ". $data['first-name'] .",\nPlease click below to confirm your registration.\n<a href='" . $url . "'>Confirm Me</a>";
 						
+						$author_obj = get_user_by( 'id', 1 );
+						$author_email = isset( $author_obj->data->user_email ) ? $author_obj->data->user_email : 'dcmayankavi@gmail.com';
+						$headers = "From: " . $author_email . "\n";
+						$headers .= "Content-Type: text/html\n";
+
 						if( wp_mail( $data['email'], $subject, $message, $headers ) ) {
 							update_option( 'user-registration-not-activated', $waiting_data );
 							$response['success'] = true;
